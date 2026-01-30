@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brutal-black: #000000;
+  --color-brutal-white: #FFFFFF;
+  --color-brutal-gray: #666666;
+  --color-brutal-red: #FF0000;
+
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-display: "Bebas Neue", Impact, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-brutal-white);
+    color: var(--color-brutal-black);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-brutal-black);
+    color: var(--color-brutal-white);
+  }
+}
+
+@layer components {
+  .brutal-input {
+    width: 100%;
+    padding: 1rem;
+    border: 3px solid var(--color-brutal-black);
+    background-color: var(--color-brutal-white);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    outline: none;
+    transition: none;
+  }
+
+  .brutal-input:focus {
+    background-color: var(--color-brutal-black);
+    color: var(--color-brutal-white);
+  }
+
+  .brutal-input::placeholder {
+    color: var(--color-brutal-gray);
+  }
+
+  .brutal-button {
+    width: 100%;
+    padding: 1.25rem;
+    border: 3px solid var(--color-brutal-black);
+    background-color: var(--color-brutal-black);
+    color: var(--color-brutal-white);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: none;
+  }
+
+  .brutal-button:hover:not(:disabled) {
+    background-color: var(--color-brutal-white);
+    color: var(--color-brutal-black);
+  }
+
+  .brutal-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .brutal-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .brutal-container {
+    border: 3px solid var(--color-brutal-black);
+    background-color: var(--color-brutal-white);
+  }
+
+  .brutal-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
