@@ -15,7 +15,8 @@ export async function generateLinkedInPost(
   })
 
   if (!response.ok) {
-    throw new Error(`Failed to generate post: ${response.statusText}`)
+    const errorData = await response.json().catch(() => ({}))
+    throw new Error(errorData.error || `Failed to generate post: ${response.status}`)
   }
 
   return response.json()
