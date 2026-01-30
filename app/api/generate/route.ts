@@ -12,15 +12,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const webhookUrl = process.env.N8N_WEBHOOK_URL
-    if (!webhookUrl) {
-      return NextResponse.json(
-        { error: 'Webhook URL not configured' },
-        { status: 500 }
-      )
-    }
-
-    const response = await fetch(webhookUrl, {
+    const response = await fetch('https://thenel.app.n8n.cloud/webhook/linkedin-post-generator', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ topic, targetAudience })
